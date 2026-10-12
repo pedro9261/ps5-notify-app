@@ -22,7 +22,3 @@ La recepción en tiempo real se mantiene activa. El intervalo adicional permite 
 Después de conceder el permiso, Android mantiene el servicio de notificaciones aunque la pantalla esté apagada o estés usando otra app, así que puedes dejar el móvil bloqueado mientras juegas. El teléfono debe permanecer encendido, con PS5 Notify instalada, el permiso habilitado y conexión a la misma red que la PS5. Apagar el móvil por completo o forzar la detención de la app impedirá recibir notificaciones.
 
 La opción **Mostrar el contenido del mensaje en la TV** está desactivada por defecto para proteger la privacidad.
-
-## Compilar
-
-El workflow **Build APK** compila la app y publica el APK de depuración como artefacto `ps5-notify-apk`.
