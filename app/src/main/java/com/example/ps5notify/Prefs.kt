@@ -26,6 +26,10 @@ class Prefs(ctx: Context) {
         get() = sp.getBoolean("showContent", false)
         set(v) = sp.edit().putBoolean("showContent", v).apply()
 
+    var pollIntervalMinutes: Int
+        get() = sp.getInt("pollIntervalMinutes", 2).coerceAtLeast(1)
+        set(v) = sp.edit().putInt("pollIntervalMinutes", v.coerceAtLeast(1)).apply()
+
     var allowedApps: Set<String>
         get() = sp.getStringSet("allowed", emptySet()) ?: emptySet()
         set(v) = sp.edit().putStringSet("allowed", v).apply()

@@ -13,6 +13,7 @@
 
     <application
         android:allowBackup="false"
+        android:icon="@mipmap/icon"
         android:label="PS5 Notify"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
