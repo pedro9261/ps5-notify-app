@@ -78,7 +78,9 @@ class MainActivity : AppCompatActivity() {
 
         val host = input("IP de la PS5", prefs.host, "Ej. 192.168.1.50")
         val port = input("Puerto", prefs.port.toString(), "9055", InputType.TYPE_CLASS_NUMBER)
-        val token = input("Token", prefs.token, "El mismo configurado en el receptor")
+        val token = input("Token (solo lectura)", prefs.token, "Fijo para coincidir con el bridge").apply {
+            isEnabled = false
+        }
         val interval = input(
             "Verificar también cada (minutos)",
             prefs.pollIntervalMinutes.toString(),
@@ -137,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
         val saveButton = actionButton("Guardar configuración")
         saveButton.setOnClickListener {
-            if (save(prefs, host, port, token, interval, enabled, showContent)) {
+            if (save(prefs, host, port, interval, enabled, showContent)) {
                 Toast.makeText(this, "Configuración guardada", Toast.LENGTH_SHORT).show()
             }
         }
@@ -145,7 +147,7 @@ class MainActivity : AppCompatActivity() {
 
         val testButton = actionButton("Guardar y enviar notificación de prueba")
         testButton.setOnClickListener {
-            if (save(prefs, host, port, token, interval, enabled, showContent)) {
+            if (save(prefs, host, port, interval, enabled, showContent)) {
                 Ps5Client.send(prefs, "msg", "PS5 Notify", "Prueba", "La conexión funciona")
                 Toast.makeText(this, "Prueba enviada", Toast.LENGTH_SHORT).show()
             }
@@ -269,7 +271,6 @@ class MainActivity : AppCompatActivity() {
         prefs: Prefs,
         host: EditText,
         port: EditText,
-        token: EditText,
         interval: EditText,
         enabled: Switch,
         showContent: Switch
@@ -283,7 +284,6 @@ class MainActivity : AppCompatActivity() {
 
         prefs.host = host.text.toString().trim()
         prefs.port = port.text.toString().toIntOrNull() ?: 9055
-        prefs.token = token.text.toString().trim()
         prefs.pollIntervalMinutes = minutes
         prefs.enabled = enabled.isChecked
         prefs.showContent = showContent.isChecked

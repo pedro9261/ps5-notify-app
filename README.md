@@ -5,11 +5,15 @@
 ## Configuración
 
 1. Instala el APK generado por GitHub Actions: pestaña **Actions** -> último **Build APK** -> **Artifacts** -> `ps5-notify-apk`.
-2. En PS5 Notify, introduce la IP y el puerto del receptor en la PS5. El puerto predeterminado es `9055`.
-3. Usa el mismo token que en el receptor; el valor inicial es `ps5notify`.
-4. Pulsa **Conceder acceso a notificaciones** y autoriza PS5 Notify en los ajustes de Android.
-5. Selecciona las aplicaciones que quieras reenviar y guarda la configuración.
-6. Usa **Guardar y enviar notificación de prueba** para comprobar la conexión.
+2. Transfiere el archivo `notify-bridge.elf` a la PS5 usando el método de transferencia disponible en tu configuración.
+3. Abre **Payload Manager** en la PS5, selecciona `notify-bridge.elf` y ejecútalo como payload. El bridge debe estar ejecutándose para que la PS5 reciba los mensajes.
+4. En PS5 Notify, introduce la IP de la PS5 y el puerto del receptor. El puerto predeterminado es `9055`.
+5. El token predeterminado es `ps5notify`. No lo cambies: debe coincidir con el token del `notify-bridge.elf`. El campo aparece bloqueado en la app.
+6. Pulsa **Conceder acceso a notificaciones** y autoriza PS5 Notify en los ajustes de Android.
+7. Selecciona las aplicaciones que quieras reenviar y guarda la configuración.
+8. Usa **Guardar y enviar notificación de prueba** para comprobar la conexión.
+
+Si reinicias la PS5 o vuelves a cargar el entorno de payloads, ejecuta otra vez `notify-bridge.elf` desde Payload Manager antes de usar la app.
 
 ## Recepción y comprobación
 
